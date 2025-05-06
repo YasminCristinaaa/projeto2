@@ -1,127 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> 
-    
-
-<style>
-
-    body{
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: rgb(138, 136, 134);
-        color: rgb(8, 8, 8);
+    <title>Página de Contatos</title>
+    <style>
+        :root {
+            --orange-primary: #ff7700;
+            --orange-secondary: #ff9944;
+            --orange-dark: #e65c00;
+            --orange-light: #ffbe7a;
+            --white: #ffffff;
+            --dark-text: #333333;
+        }
         
-    }
-    .menu{
-        background-color: rgb(231, 216, 245);
-        color: aquamarine;
-        justify-items: center;
-    }
-    
-    .menu-lista{
-        list-style: none;/*none tira as bolinhas*/
-        display: flex;
-        padding: 0;
-        margin: 0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         
-     
-    }
-    .menu-item{
-        margin: 0;
-
-    
-    }
-    .menu-item a{
-        display: block;
-        padding: 15px 20px;
-        text-decoration: none;
-        color: rgb(124, 6, 6);
+        body {
+            background-color: #fff5ec;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
         
-    }
-
-    .menu-item a:hover{
-        background-color: rgb(228, 176, 176);
-    }
-    .conteudo{
-        background-color: antiquewhite;
-        text-align: center;
-        margin: 20px 37%;
-        padding: 10px;
-    }
-    .conteudo P{
-        text-align: justify;
-        margin: 20px 10px;
-    }
-
-   
-   
-   
-   
-    form {
-  width: 300px;
-  margin: 0 auto;
-}
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-input[type="text"], input[type="email"], input[type="tel"] {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-}
-input[type="submit"] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-}
-    
-
-</style>
+        .header {
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-dark));
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(230, 92, 0, 0.3);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(255, 119, 0, 0.2);
+        }
+        
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--orange-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            color: var(--orange-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-container {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-title {
+            color: var(--orange-dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--orange-primary);
+            box-shadow: 0 0 0 3px rgba(255, 119, 0, 0.2);
+        }
+        
+        .btn {
+            background-color: var(--orange-primary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background-color: var(--orange-dark);
+        }
+        
+        .map-container {
+            margin-top: 3rem;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--orange-primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background-color: var(--orange-dark);
+        }
+        
+        .feedback {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <nav class="menu">
-        <ul class="menu-lista">
-            <li class="menu-item"><a href="./inicio.html">ínicio</a></li>
-            <li class="menu-item"><a href="./home.html">home</a></li>
-            <li class="menu-item"><a href="./contato.html">contato</a></li>
-            <li class="menu-item"><a href="./sobre.html">sobre</a></li>
-           
-        </ul>
-    </nav>
-    <div class="conteudo">
-        <h1> Bem-Vindo ao Menu Siples  </h1>
-        <p>este menu e so um teste pra memorizar as tegs 
-            e nao mais esquecer 
-        </p>
+    <header class="header">
+        <h1>Entre em Contato</h1>
+        <p>Estamos sempre prontos para atender você</p>
+    </header>
 
-    </div>
-       
-
-    <form action="/enviar_contato" method="post">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
-    
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
-    
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone">
-    
-        <label for="outros">Outras Informações:</label>
-        <input type="text" id="outros" name="outros">
-    
-        <input type="submit" value="Enviar">
+    <div class="container">
+        <div class="contact-info">
+            <div class="contact-card" onclick="showInfo('phone')">
+                <i class="fas fa-phone-alt"></i>
+                <h3>Telefone</h3>
+                <p> (69) 98484-1086</p>
+                <p>(11) 98765-4321</p>
+            </div>
+            
+            <div class="contact-card" onclick="showInfo('email')">
+                <i class="fas fa-envelope"></i>
+                <h3>E-mail</h3>
+                <p>nexlevelmarketing@empresa.com</p>
+                <p>nexlevelmarketing@empresa.com</p>
+            </div>
+            
+            <div class="contact-card" onclick="showInfo('location')">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Endereço</h3>
+                <p>Av. Tiradentes,3009 - SETOR INDUSTRIAL IDEP</p>
+                <p>Porto Velho - RO</p>
+            </div>
+        </div>
         
-    </form>
-    
+        <div class="form-container">
+            <h2 class="form-title">Envie sua mensagem</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="tel" id="phone" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Assunto</label>
+                    <input type="text" id="subject" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" class="form-control" rows="6" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Enviar Mensagem</button>
+                
+                <div id="feedbackMessage" class="feedback"></div>
+            </form>
+        </div>
+        
+        <div class="map-container">
+            <img src="sede-idep.webp" alt="Mapa de Localização" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        
+        <div class="social-media">
+            <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-instagram"></i>
+            </a>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
 
-
-    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const feedback = document.getElementById('feedbackMessage');
+            
+            // Validação simples
+            if (name && email && message) {
+                // Simulação de envio bem-sucedido
+                feedback.classList.add('success');
+                feedback.classList.remove('error');
+                feedback.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                feedback.style.display = 'block';
+                this.reset();
+            } else {
+                feedback.classList.add('error');
+                feedback.classList.remove('success');
+                feedback.textContent = 'Por favor, preencha todos os campos obrigatórios.';
+                feedback.style.display = 'block';
+            }
+        });
+        
+        function showInfo(type) {
+            let message = '';
+            
+            switch(type) {
+                case 'phone':
+                    message = 'Horário de atendimento telefônico:\nSeg-Sex: 9h às 18h';
+                    break;
+                case 'email':
+                    message = 'Respondemos emails em até 24 horas úteis';
+                    break;
+                case 'location':
+                    message = 'Horário de funcionamento:\nSeg-Sex: 9h às 18h\nSáb: 9h às 13h';
+                    break;
+            }
+            
+            alert(message);
+        }
+        
+        // Efeito de foco nos campos do formulário
+        const formControls = document.querySelectorAll('.form-control');
+        formControls.forEach(control => {
+            control.addEventListener('focus', function() {
+                this.parentElement.style.color = '#ff7700';
+            });
+            
+            control.addEventListener('blur', function() {
+                this.parentElement.style.color = '#333333';
+            });
+        });
+    </script>
 </body>
 </html>
